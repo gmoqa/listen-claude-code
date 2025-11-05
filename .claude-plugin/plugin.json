@@ -1,6 +1,6 @@
 {
   "name": "claude-listen",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Voice input plugin for Claude Code using the listen CLI tool. Enables voice-to-text transcription for hands-free coding.",
   "author": {
     "name": "gmoqa",
