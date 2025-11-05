@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.claude.ai/marketplace.json",
   "name": "gmoqa-listen",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "Voice input plugin for Claude Code using listen CLI",
   "owner": {
     "name": "gmoqa",
@@ -10,9 +10,9 @@
   "plugins": [
     {
       "name": "claude-listen",
-      "source": "./",
+      "source": ".",
       "description": "Voice input for Claude Code using listen CLI with local Whisper transcription",
-      "version": "1.0.0",
+      "version": "1.1.1",
       "author": {
         "name": "gmoqa",
         "email": "gmoqa@users.noreply.github.com"
