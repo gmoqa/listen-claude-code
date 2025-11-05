@@ -1,6 +1,5 @@
 {
   "name": "claude-listen",
-  "displayName": "Listen Voice Input",
   "version": "1.0.0",
   "description": "Voice input plugin for Claude Code using the listen CLI tool. Enables voice-to-text transcription for hands-free coding.",
   "author": {
@@ -11,9 +10,6 @@
   "license": "MIT",
   "repository": "https://github.com/gmoqa/listen-claude-code",
   "homepage": "https://github.com/gmoqa/listen-claude-code#readme",
-  "bugs": {
-    "url": "https://github.com/gmoqa/listen-claude-code/issues"
-  },
   "keywords": [
     "voice",
     "transcription",
@@ -24,16 +20,5 @@
     "listen",
     "hands-free",
     "accessibility"
-  ],
-  "category": "productivity",
-  "requirements": {
-    "listen": {
-      "description": "The listen CLI tool must be installed and available in PATH. Supports Python 3.8+.",
-      "url": "https://github.com/gmoqa/listen",
-      "version": ">=1.0.0"
-    }
-  },
-  "engines": {
-    "node": ">=18.0.0"
-  }
+  ]
 }
