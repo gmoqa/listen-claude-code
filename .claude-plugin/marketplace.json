@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "claude-listen",
-      "source": ".",
+      "source": "./",
       "description": "Voice input for Claude Code using listen CLI with local Whisper transcription",
       "version": "1.1.1",
       "author": {
