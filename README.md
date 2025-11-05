@@ -24,20 +24,22 @@ Voice input for Claude Code using [listen](https://github.com/gmoqa/listen) CLI 
 git clone https://github.com/gmoqa/listen.git
 cd listen
 pip install -r requirements.txt
-python listen.py --help
+# Ensure 'listen' is available in PATH
 ```
 
-### 2. Install plugin
+### 2. Install plugin in Claude Code
 
-```bash
-./install.sh
+Open Claude Code and run:
+
+```
+/plugin marketplace add gmoqa/listen-claude-code
+/plugin install claude-listen@gmoqa/listen-claude-code
 ```
 
-This will:
+That's it! The plugin will automatically:
 - Install MCP server dependencies
-- Copy commands to `~/.claude/commands/`
-- Copy MCP server to `~/.claude/mcp-servers/listen-voice/`
-- Configure Claude Code MCP settings
+- Configure the listen voice tool
+- Add the `/listen` command
 
 ## Usage
 

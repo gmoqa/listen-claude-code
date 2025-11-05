@@ -9,10 +9,10 @@
     "url": "https://github.com/gmoqa"
   },
   "license": "MIT",
-  "repository": "https://github.com/gmoqa/claude-listen-plugin",
-  "homepage": "https://github.com/gmoqa/claude-listen-plugin#readme",
+  "repository": "https://github.com/gmoqa/listen-claude-code",
+  "homepage": "https://github.com/gmoqa/listen-claude-code#readme",
   "bugs": {
-    "url": "https://github.com/gmoqa/claude-listen-plugin/issues"
+    "url": "https://github.com/gmoqa/listen-claude-code/issues"
   },
   "keywords": [
     "voice",
@@ -28,7 +28,7 @@
   "category": "productivity",
   "requirements": {
     "listen": {
-      "description": "The listen CLI tool must be installed and available in PATH. Supports Python 3.8+. Requires --signal-mode flag (v1.0.0+).",
+      "description": "The listen CLI tool must be installed and available in PATH. Supports Python 3.8+.",
       "url": "https://github.com/gmoqa/listen",
       "version": ">=1.0.0"
     }
