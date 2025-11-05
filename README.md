@@ -4,10 +4,10 @@ Voice input for Claude Code using [listen](https://github.com/gmoqa/listen) CLI 
 
 ## Features
 
-- 🎤 Voice input instead of typing
-- 🌍 Multi-language support (es, en, fr, de, it, pt, zh, ja, ko)
-- ⚡ Multiple Whisper models (tiny to large)
-- 🔧 MCP server integration with slash commands
+- Voice input instead of typing
+- Multi-language support (es, en, fr, de, it, pt, zh, ja, ko)
+- Multiple Whisper models (tiny to large)
+- MCP server integration with slash commands
 
 ## Requirements
 
