@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "listen-voice": {
+      "command": "node",
+      "args": ["./mcp-server/server.js"],
+      "transport": "stdio",
+      "env": {
+        "LISTEN_PATH": "listen"
+      }
+    }
+  }
+}

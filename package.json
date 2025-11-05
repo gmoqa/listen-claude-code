@@ -1,0 +1,29 @@
+{
+  "name": "claude-listen-plugin",
+  "version": "1.0.0",
+  "description": "Voice input plugin for Claude Code using listen CLI",
+  "scripts": {
+    "install-deps": "cd mcp-server && npm install",
+    "test-server": "cd mcp-server && node server.js",
+    "install-plugin": "./install.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gmoqa/claude-listen-plugin"
+  },
+  "keywords": [
+    "claude-code",
+    "plugin",
+    "voice",
+    "transcription",
+    "whisper",
+    "listen",
+    "mcp"
+  ],
+  "author": "gmoqa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gmoqa/listen/issues"
+  },
+  "homepage": "https://github.com/gmoqa/listen#readme"
+}

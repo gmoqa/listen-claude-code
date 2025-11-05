@@ -1,0 +1,115 @@
+#!/bin/bash
+# mock-listen - Mock de listen para testing del wrapper
+# Simula el comportamiento de listen --signal-mode
+
+set -e
+
+# Parse arguments
+LANG="en"
+MODEL="base"
+SIGNAL_MODE=false
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -l|--language)
+            LANG="$2"
+            shift 2
+            ;;
+        -m|--model)
+            MODEL="$2"
+            shift 2
+            ;;
+        --signal-mode)
+            SIGNAL_MODE=true
+            shift
+            ;;
+        -v|--verbose)
+            VERBOSE=true
+            shift
+            ;;
+        *)
+            shift
+            ;;
+    esac
+done
+
+if [ "$SIGNAL_MODE" = false ]; then
+    echo "Error: This mock only works with --signal-mode" >&2
+    exit 1
+fi
+
+# Variables globales
+STOP_REQUESTED=false
+RECORDING_FILE=$(mktemp)
+
+# Handler para SIGUSR1
+handle_sigusr1() {
+    STOP_REQUESTED=true
+    echo "[mock-listen] SIGUSR1 received, stopping..." >&2
+}
+
+# Registrar handler
+trap handle_sigusr1 SIGUSR1
+
+# Simular UI de listen en stderr (que será suprimido por el wrapper)
+echo "[mock-listen] Starting recording (language: $LANG, model: $MODEL)" >&2
+echo "[mock-listen] PID: $$" >&2
+
+# "Grabar" - simplemente esperar hasta que se reciba SIGUSR1
+START_TIME=$(date +%s)
+while [ "$STOP_REQUESTED" = false ]; do
+    ELAPSED=$(($(date +%s) - START_TIME))
+    echo "[mock-listen] Recording... ${ELAPSED}s" >&2
+    sleep 0.5
+
+    # Safety timeout (300 segundos = 5 minutos)
+    if [ $ELAPSED -ge 300 ]; then
+        echo "[mock-listen] Timeout reached" >&2
+        break
+    fi
+done
+
+DURATION=$(($(date +%s) - START_TIME))
+echo "[mock-listen] Recording stopped after ${DURATION}s" >&2
+
+# Simular procesamiento
+echo "[mock-listen] Processing audio..." >&2
+sleep 1
+echo "[mock-listen] Loading Whisper model: $MODEL..." >&2
+sleep 1
+echo "[mock-listen] Transcribing..." >&2
+sleep 1
+
+# Generar transcripción mock basada en la duración
+if [ $DURATION -lt 3 ]; then
+    TRANSCRIPTION="Hello Claude"
+elif [ $DURATION -lt 6 ]; then
+    TRANSCRIPTION="Show me the Python files in this directory"
+elif [ $DURATION -lt 10 ]; then
+    TRANSCRIPTION="Create a function that calculates the factorial of a number"
+else
+    TRANSCRIPTION="This is a longer test message that simulates a more complex voice input with multiple sentences and ideas."
+fi
+
+# Agregar información sobre el idioma si no es inglés
+if [ "$LANG" != "en" ]; then
+    case $LANG in
+        es) TRANSCRIPTION="Muéstrame los archivos Python en este directorio" ;;
+        fr) TRANSCRIPTION="Montre-moi les fichiers Python dans ce répertoire" ;;
+        de) TRANSCRIPTION="Zeige mir die Python-Dateien in diesem Verzeichnis" ;;
+        *) TRANSCRIPTION="[Test message in $LANG]" ;;
+    esac
+fi
+
+echo "[mock-listen] Transcription complete" >&2
+echo "[mock-listen] Result: $TRANSCRIPTION" >&2
+
+# Output de la transcripción a stdout (como listen real)
+echo "$TRANSCRIPTION"
+
+# Simular cleanup
+echo "[mock-listen] Cleaning up..." >&2
+rm -f "$RECORDING_FILE"
+echo "[mock-listen] Done!" >&2
+
+exit 0

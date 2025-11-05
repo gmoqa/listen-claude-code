@@ -1,0 +1,16 @@
+{
+  "name": "claude-listen-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for listen voice transcription tool",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4"
+  },
+  "keywords": ["mcp", "voice", "transcription"],
+  "author": "gmoqa",
+  "license": "MIT"
+}
